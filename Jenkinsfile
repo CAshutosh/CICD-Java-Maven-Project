@@ -28,6 +28,12 @@ pipeline{
             }
         }
 
+        stage("publish to nexus"){
+            steps{
+                nexusArtifactUploader artifacts: [[artifactId: 'WebApp', classifier: '', file: 'target/WebApp-0.0.2-SNAPSHOT.war', type: 'war']], credentialsId: '5939076f-5683-42d7-8edc-7c7f0775159f', groupId: 'com.devops', nexusUrl: '10.0.101.80:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'WebAPP-SNAPSHOT', version: '0.0.2-SNAPSHOT'
+            }
+        }
+
         stage("TestDeploy"){
             steps{
                 echo 'Deploying.......'

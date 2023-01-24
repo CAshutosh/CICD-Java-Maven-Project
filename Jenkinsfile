@@ -2,12 +2,12 @@ pipeline{
     // Directives
     agent any
     tools {
-        maven 'maven'
+        maven "maven"
     }
     stages{
         stage("Build"){
             steps{
-                sh 'mvn clean install package'
+                sh "mvn clean install package"
             }
             post{
                 always{

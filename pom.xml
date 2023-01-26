@@ -4,7 +4,7 @@
   <groupId>com.devops</groupId>
   <artifactId>WebApp</artifactId>
   <packaging>war</packaging>
-  <version>0.0.6</version>
+  <version>0.0.7</version>
   <name>Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>

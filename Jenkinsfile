@@ -41,7 +41,22 @@ pipeline{
             steps{
                 script{
                     def NexusRepo = Version.endsWith("SNAPSHOT") ? "WebApp-SNAPSHOT" : "WebApp-RELEASE"
-                    nexusArtifactUploader artifacts: [[artifactId: "${ArtifactId}", classifier: '', file: "target/${ArtifactId}-${Version}.war", type: 'war']], credentialsId: '54343664-ed4c-47f8-9ade-5407fbc33e37', groupId: "${GroupId}", nexusUrl: '54.83.182.4:8081', nexusVersion: 'nexus3', protocol: 'http', repository: "${NexusRepo}", version: "${Version}"
+                    nexusArtifactUploader artifacts: 
+                    [
+                      [
+                        artifactId: "${ArtifactId}",
+                        classifier: '',
+                        file: "target/${ArtifactId}-${Version}.war",
+                        type: 'war'
+                      ]
+                    ],
+                      credentialsId: '54343664-ed4c-47f8-9ade-5407fbc33e37',
+                      groupId: "${GroupId}",
+                      nexusUrl: '54.83.182.4:8081',
+                      nexusVersion: 'nexus3',
+                      protocol: 'http',
+                      repository: "${NexusRepo}",
+                      version: "${Version}"
                 }
             }
         }
@@ -58,6 +73,22 @@ pipeline{
         stage("TestDeploy"){
             steps{
                 echo 'Deploying.......'
+                sshPublisher(publishers:
+                    [sshPublisherDesc(
+                        configName: 'Ansible_Controller',
+                        transfers:
+                            [sshTransfer(
+                                cleanRemote: false,
+                                execCommand: 'ansible-playbook /opt/playbooks/DownloadAndDeployArtifacts.yaml -i /opt/playbooks/hosts',
+                                execTimeout: 120000,
+                                )
+                            ],
+                            usePromotionTimestamp: false,
+                            useWorkspaceInPromotion: false,
+                            verbose: false
+                        )
+                    ]
+                )
             }
         }
     }

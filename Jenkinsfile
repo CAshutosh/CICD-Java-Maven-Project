@@ -41,7 +41,7 @@ pipeline{
             steps{
                 script{
                     def NexusRepo = Version.endsWith("SNAPSHOT") ? "WebApp-SNAPSHOT" : "WebApp-RELEASE"
-                    nexusArtifactUploader artifacts: [[artifactId: "${ArtifactId}", classifier: '', file: "target/${ArtifactId}-${Version}.war", type: 'war']], credentialsId: '35e3840b-f830-4b4c-aed5-d8ab27180b03', groupId: "${GroupId}", nexusUrl: '10.0.101.214:8081', nexusVersion: 'nexus3', protocol: 'http', repository: "${NexusRepo}", version: "${Version}"
+                    nexusArtifactUploader artifacts: [[artifactId: "${ArtifactId}", classifier: '', file: "target/${ArtifactId}-${Version}.war", type: 'war']], credentialsId: '54343664-ed4c-47f8-9ade-5407fbc33e37', groupId: "${GroupId}", nexusUrl: '54.83.182.4:8081', nexusVersion: 'nexus3', protocol: 'http', repository: "${NexusRepo}", version: "${Version}"
                 }
             }
         }

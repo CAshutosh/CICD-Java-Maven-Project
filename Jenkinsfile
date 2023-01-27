@@ -70,27 +70,27 @@ pipeline{
             }
         }
 
-        // stage("TestDeploy"){
-        //     steps{
-        //         echo 'Deploying.......'
-        //         sshPublisher(publishers:
-        //             [sshPublisherDesc(
-        //                 configName: 'Ansible_Controller',
-        //                 transfers:
-        //                     [sshTransfer(
-        //                         cleanRemote: false,
-        //                         execCommand: 'ansible-playbook /opt/playbooks/DownloadAndDeployArtifacts.yaml -i /opt/playbooks/hosts',
-        //                         execTimeout: 120000,
-        //                         )
-        //                     ],
-        //                     usePromotionTimestamp: false,
-        //                     useWorkspaceInPromotion: false,
-        //                     verbose: false
-        //                 )
-        //             ]
-        //         )
-        //     }
-        // }
+        stage("TestDeploy"){
+            steps{
+                echo 'Deploying.......'
+                sshPublisher(publishers:
+                    [sshPublisherDesc(
+                        configName: 'Ansible_Controller',
+                        transfers:
+                            [sshTransfer(
+                                cleanRemote: false,
+                                execCommand: 'ansible-playbook /opt/playbooks/DownloadAndDeployArtifacts.yaml -i /opt/playbooks/hosts',
+                                execTimeout: 120000,
+                                )
+                            ],
+                            usePromotionTimestamp: false,
+                            useWorkspaceInPromotion: false,
+                            verbose: false
+                        )
+                    ]
+                )
+            }
+        }
     }
     post{
         always{

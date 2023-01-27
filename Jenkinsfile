@@ -52,7 +52,7 @@ pipeline{
                     ],
                       credentialsId: 'df7a0d88-962d-47a4-8aaa-5682b00ec44c',
                       groupId: "${GroupId}",
-                      nexusUrl: '54.83.182.4:8081',
+                      nexusUrl: '52.91.215.43:8081',
                       nexusVersion: 'nexus3',
                       protocol: 'http',
                       repository: "${NexusRepo}",

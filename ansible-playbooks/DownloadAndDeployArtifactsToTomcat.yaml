@@ -1,0 +1,26 @@
+---
+- name: This playbook is to download the latest war file from nexus
+  hosts: localhost
+  become: true
+  vars_files:
+    - /opt/playbooks/variables.yaml
+  tasks:
+    - name: download the war file
+      shell: 'curl -u admin:admin -L "http://10.0.101.191:8081/service/rest/v1/search/assets/download?sort=version&repository=WebApp-RELEASE&maven.groupId=com.devops&maven.artifactId=WebApp&maven.extension=war" -H "accept: application/json" --output /home/ansibleadmin/latest.war'
+      args:
+        chdir: "{{ changedir_location}}"
+
+- name: Deploy the latest war file to apache tomcat
+  hosts: tomcat
+  become: true
+  vars_files:
+    - /opt/playbooks/variables.yaml
+  tasks:
+    - copy:
+        src: "{{ item }}"
+        dest: "{{ destination_location }}"
+        owner: tomcat
+        group: tomcat
+        mode: u+rwx,g+rwx,o-rwx
+      with_fileglob:
+        - "{{ buildartifact_location }}"

@@ -50,9 +50,9 @@ pipeline{
                         type: 'war'
                       ]
                     ],
-                      credentialsId: 'df7a0d88-962d-47a4-8aaa-5682b00ec44c',
+                      credentialsId: '6c211ea1-7e53-4ab8-8c37-e295055b2dd2',
                       groupId: "${GroupId}",
-                      nexusUrl: '52.91.215.43:8081',
+                      nexusUrl: '3.238.80.102:8081',
                       nexusVersion: 'nexus3',
                       protocol: 'http',
                       repository: "${NexusRepo}",
@@ -70,50 +70,50 @@ pipeline{
             }
         }
 
-        stage("Deploy to Tomcat"){
-            steps{
-                echo 'Deploying.......'
-                sshPublisher(publishers:
-                    [sshPublisherDesc(
-                        configName: 'Ansible_Controller',
-                        transfers:
-                            [sshTransfer(
-                                cleanRemote: false,
-                                execCommand: 'ansible-playbook /opt/playbooks/DownloadAndDeployArtifactsTomcat.yaml -i /opt/playbooks/hosts',
-                                execTimeout: 120000,
-                                )
-                            ],
-                            usePromotionTimestamp: false,
-                            useWorkspaceInPromotion: false,
-                            verbose: false
-                        )
-                    ]
-                )
-            }
-        }
+        // stage("Deploy to Tomcat"){
+        //     steps{
+        //         echo 'Deploying.......'
+        //         sshPublisher(publishers:
+        //             [sshPublisherDesc(
+        //                 configName: 'Ansible_Controller',
+        //                 transfers:
+        //                     [sshTransfer(
+        //                         cleanRemote: false,
+        //                         execCommand: 'ansible-playbook /opt/playbooks/DownloadAndDeployArtifactsTomcat.yaml -i /opt/playbooks/hosts',
+        //                         execTimeout: 120000,
+        //                         )
+        //                     ],
+        //                     usePromotionTimestamp: false,
+        //                     useWorkspaceInPromotion: false,
+        //                     verbose: false
+        //                 )
+        //             ]
+        //         )
+        //     }
+        // }
         
-        stage("Deploy to Docker"){
-            steps{
-                echo 'Deploying.......'
-                sshPublisher(publishers:
-                    [sshPublisherDesc(
-                        configName: 'Ansible_Controller',
-                        transfers:
-                            [sshTransfer(
-                                cleanRemote: false,
-                                execCommand: 'ansible-playbook /opt/playbooks/DownloadAndDeployArtifactsToDocker.yaml -i /opt/playbooks/hosts',
-                                execTimeout: 120000,
-                                )
-                            ],
-                            usePromotionTimestamp: false,
-                            useWorkspaceInPromotion: false,
-                            verbose: false
-                        )
-                    ]
-                )
-            }
-        }
-    }
+    //     stage("Deploy to Docker"){
+    //         steps{
+    //             echo 'Deploying.......'
+    //             sshPublisher(publishers:
+    //                 [sshPublisherDesc(
+    //                     configName: 'Ansible_Controller',
+    //                     transfers:
+    //                         [sshTransfer(
+    //                             cleanRemote: false,
+    //                             execCommand: 'ansible-playbook /opt/playbooks/DownloadAndDeployArtifactsToDocker.yaml -i /opt/playbooks/hosts',
+    //                             execTimeout: 120000,
+    //                             )
+    //                         ],
+    //                         usePromotionTimestamp: false,
+    //                         useWorkspaceInPromotion: false,
+    //                         verbose: false
+    //                     )
+    //                 ]
+    //             )
+    //         }
+    //     }
+    // }
     post{
         always{
             echo "========always========"

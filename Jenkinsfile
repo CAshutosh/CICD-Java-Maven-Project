@@ -94,7 +94,7 @@ pipeline{
         
         stage("Deploy to Docker"){
             steps{
-                echo 'Deploying.......'
+                echo 'Deploying to docker container.......'
                 sshPublisher(publishers:
                     [sshPublisherDesc(
                         configName: 'Ansible_Controller',

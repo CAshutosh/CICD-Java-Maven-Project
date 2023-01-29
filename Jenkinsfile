@@ -37,6 +37,15 @@ pipeline{
             }
         }
 
+        stage("Sonarqube Analysis"){
+            steps{
+                echo 'Source code published to sonarqube for SCA.......'
+                withSonarQubeEnv('sonarqube'){ // You can override the credential to be used
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
+
         stage("publish to nexus"){
             steps{
                 script{

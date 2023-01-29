@@ -92,28 +92,28 @@ pipeline{
         //     }
         // }
         
-    //     stage("Deploy to Docker"){
-    //         steps{
-    //             echo 'Deploying.......'
-    //             sshPublisher(publishers:
-    //                 [sshPublisherDesc(
-    //                     configName: 'Ansible_Controller',
-    //                     transfers:
-    //                         [sshTransfer(
-    //                             cleanRemote: false,
-    //                             execCommand: 'ansible-playbook /opt/playbooks/DownloadAndDeployArtifactsToDocker.yaml -i /opt/playbooks/hosts',
-    //                             execTimeout: 120000,
-    //                             )
-    //                         ],
-    //                         usePromotionTimestamp: false,
-    //                         useWorkspaceInPromotion: false,
-    //                         verbose: false
-    //                     )
-    //                 ]
-    //             )
-    //         }
-    //     }
-    // }
+        // stage("Deploy to Docker"){
+        //     steps{
+        //         echo 'Deploying.......'
+        //         sshPublisher(publishers:
+        //             [sshPublisherDesc(
+        //                 configName: 'Ansible_Controller',
+        //                 transfers:
+        //                     [sshTransfer(
+        //                         cleanRemote: false,
+        //                         execCommand: 'ansible-playbook /opt/playbooks/DownloadAndDeployArtifactsToDocker.yaml -i /opt/playbooks/hosts',
+        //                         execTimeout: 120000,
+        //                         )
+        //                     ],
+        //                     usePromotionTimestamp: false,
+        //                     useWorkspaceInPromotion: false,
+        //                     verbose: false
+        //                 )
+        //             ]
+        //         )
+        //     }
+        // }
+    }
     post{
         always{
             echo "========always========"

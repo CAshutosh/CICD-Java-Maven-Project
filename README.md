@@ -6,3 +6,4 @@
 3. Once artifacts are ready then Jenkins will upload the artifacts to Nexus repository.<br>
 4. As we are deploying the build artifacts to two different servers, that is why I have created two different ansible playbooks to download the artifacts from Nexus and deploy it to Apache Tomcat and Docker container.<br>
 5. And I have also added static code analysis using Sonarqube.</p>
+![image](https://user-images.githubusercontent.com/123365436/216540241-c9a923ed-77eb-4cb2-a6b4-bc11dd912093.png)

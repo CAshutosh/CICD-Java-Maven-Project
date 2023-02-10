@@ -1,4 +1,5 @@
-<p class="has-line-data" data-line-start="0" data-line-end="1">DevOps CICD Project</p>
+<p class="has-line-data" data-line-start="0" data-line-end="1">
+Automated CICD pipeline for Java application to deploy the artifacts on Docker Container and Tomcat Server</p>
 <p class="has-line-data" data-line-start="2" data-line-end="3">In this DevOps CICD project I have created end to end pipeline for deploying the build artifacts to the two different servers which is Tomcat Server and Docker container.</p>
 <p class="has-line-data" data-line-start="4" data-line-end="10">Let’s understand the complete end to end flow -<br>
 1. I have used Terraform to provision the infrastructure on AWS cloud.<br>

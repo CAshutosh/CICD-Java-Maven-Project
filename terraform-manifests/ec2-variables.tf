@@ -9,7 +9,7 @@ variable "instance_type" {
 variable "instance_name" {
   description = "EC2 Instance Name"
   type = list(string)
-  default = ["Jenkins-Server", "Ansible-Control-Node", "AnsibleMN-Apache-Tomcat", "AnsibleMN-Docker-Host", "Nexus-Server", "Sonarqube-Server"]
+  default = ["Jenkins-Server", "Ansible-Control-Node", "AnsibleMN-Apache-Tomcat", "AnsibleMN-Docker-Host", "Nexus-Server"]
 }
 
 variable "instance_keypair" {

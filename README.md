@@ -5,6 +5,5 @@ Automated CICD pipeline for Java application to deploy the artifacts on Docker C
 1. I have used Terraform to provision the infrastructure on AWS cloud.<br>
 2. When developer will push the latest changes to GitHub, then Jenkins build will trigger and Jenkins will build the code and create artifact using maven.<br>
 3. Once artifacts are ready then Jenkins will upload the artifacts to Nexus repository.<br>
-4. As we are deploying the build artifacts to two different servers, that is why I have created two different ansible playbooks to download the artifacts from Nexus and deploy it to Apache Tomcat and Docker container.<br>
-5. And I have also added static code analysis using Sonarqube.</p>
+4. As we are deploying the build artifacts to two different servers, that is why I have created two different ansible playbooks to download the artifacts from Nexus and deploy it to Apache Tomcat and Docker container.<br></p>
 <img width="800" src="https://user-images.githubusercontent.com/123365436/216541124-22db2972-f2a2-47dd-b075-e2b5fa25f914.PNG">
